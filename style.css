@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* --- Grundlegendes --- */
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  color: #333;
+  background: linear-gradient(180deg, #f8f8f8 0%, #ffffff 100%);
+  font-size: 16px; /* insgesamt kleiner */
+  line-height: 1.6;
+  background-attachment: fixed;
+}
+
+/* --- Hero-Bereich --- */
+.hero {
+  background: linear-gradient(rgba(30,115,190,0.4), rgba(30,115,190,0.4)),
+              url('bilder/haus_vorne.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 2.8em; /* kleiner als vorher */
+  margin-bottom: 0.2em;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.1em; /* kleiner als vorher */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* --- Hero Navigation --- */
+.hero-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.hero-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95em; /* kleiner */
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.hero-nav a:hover {
+  background-color: rgba(255,255,255,0.2);
+  color: #000000;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(30,115,190,0.3);
+}
+
+/* --- Sections --- */
+section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+  font-size: 1em; /* Text kleiner */
+}
+
+section:nth-child(even) { background: #f2f2f2; }
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Überschriften --- */
+h2 {
+  color: #1e73be;
+  border-bottom: 2px solid #1e73be;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 1.8em; /* etwas kleiner */
+}
+
+h3 {
+  font-size: 1.3em; /* kleiner */
+}
+
+/* --- Tabellen --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95em; /* kleiner */
+}
+
+/* --- Galerie --- */
+.main-gallery { position:relative; }
+.main-gallery img { width:100%; max-height:500px; object-fit:cover; border-radius:10px; cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.main-gallery img:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+.prev, .next { 
+  position:absolute; top:50%; transform:translateY(-50%); 
+  background:rgba(0,0,0,0.5); color:white; border:none; 
+  padding:10px; font-size:24px; cursor:pointer; border-radius:50%; z-index:2; 
+}
+.prev { left:10px; } 
+.next { right:10px; }
+
+.thumbnails { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+.thumbnails img { width:120px; height:80px; object-fit:cover; border-radius:5px; cursor:pointer; transition: transform 0.3s, border 0.3s; }
+.thumbnails img:hover { transform: scale(1.05); border:2px solid #1e73be; }
+
+/* --- Lightbox --- */
+.lightbox {
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0; top:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+}
+
+.lightbox img {
+  max-width:90%;
+  max-height:80%;
+  border-radius:10px;
+}
+
+.lightbox .close {
+  position:absolute;
+  top:20px; right:30px;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+}
+
+.lb-prev, .lb-next {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  color:white;
+  border:none;
+  padding:10px;
+  font-size:36px;
+  cursor:pointer;
+  border-radius:50%;
+  z-index:2;
+}
+.lb-prev { left:20px; } 
+.lb-next { right:20px; }
