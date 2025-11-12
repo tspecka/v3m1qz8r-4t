@@ -5,8 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exposé - Doppelhaushälfte in Herten</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+    visibility: hidden; /* alles zunächst unsichtbar */
+  }
+</style>
+
 </head>
 <body>
+
+<script>
+  const password = "bewerbung2026";
+
+  let userInput = prompt("Bitte Passwort eingeben:");
+
+  if (userInput === null) {
+    document.body.innerHTML = "<h2>Zugriff abgebrochen</h2>";
+  } else if (userInput.trim() === password) {
+    document.body.style.visibility = "visible"; // alles anzeigen
+  } else {
+    alert("Falsches Passwort! Zugriff verweigert.");
+    document.body.innerHTML = "<h2>Kein Zugriff</h2>";
+  }
+</script>
+
+
+
 
   <header class="hero">
     <h1>Doppelhaushälfte in Herten</h1>
@@ -44,9 +68,37 @@
     </div>
   </section>
 
+<!-- Preis direkt unterhalb der Galerie -->
+<section id="preis">
+  <div class="preis-container">
+    <p class="preis-text">Preis: ca. 180.000 € – 200.000 €</p>
+    <p class="preis-text">Mögliche monatliche Kaltmiete: ca. 700 € – 800 €</p>
+  </div>
+</section>
+
+<!-- CSS -->
+<style>
+  .preis-container {
+    margin: 20px auto;
+    padding: 15px 25px;
+    max-width: 500px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .preis-text {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+  }
+</style>
+
   <!-- Objektbeschreibung -->
   <section id="objektbeschreibung">
-    <h2>Objektbeschreibung</h2>
+
 <h2>Objektbeschreibung</h2>
 <p>Diese charmante Doppelhaushälfte aus dem Jahr 1918 liegt in einer ruhigen Wohnstraße von Herten und verbindet klassischen Wohnkomfort mit einem Garten, der eine natürliche Atmosphäre bietet. Auf ca. 75 m² Wohnfläche verteilen sich drei gut proportionierte Zimmer, die sich flexibel nach den eigenen Bedürfnissen einrichten lassen.</p>
 <p>Das Wohnzimmer und die Küche sind separate Räume. In der Küche befindet sich ein praktischer Essbereich, der sich ideal für kleinere Mahlzeiten oder entspannte Kaffeerunden eignet. Das modernisierte Bad aus dem Jahr 2022 rundet das Raumangebot ab.</p>
@@ -155,6 +207,46 @@
     window.addEventListener('scroll',handleScroll);
     window.addEventListener('load',handleScroll);
   </script>
+
+
+
+
+<!-- Alles zunächst ausblenden -->
+<div id="content" style="display:none;">
+  <h1>Willkommen zu meinem Haus-Exposé</h1>
+  <p>Hier kommt dein Inhalt rein...</p>
+</div>
+
+
+<!-- Hauptinhalt zunächst ausblenden -->
+<div id="content" style="display:none;">
+  <h1>Exposé - Doppelhaushälfte in Herten</h1>
+  <p>Hier kommt dein kompletter Exposé-Inhalt rein...</p>
+  <!-- Galerie, Grunddaten, Besonderheiten usw. -->
+</div>
+
+<script>
+  const password = "bewerbung2026";
+
+  // Passwortabfrage, bevor der Inhalt sichtbar wird
+  let userInput = prompt("Bitte Passwort eingeben:");
+
+  if (userInput === null) {
+    // Abbruch
+    document.body.innerHTML = "<h2>Zugriff abgebrochen</h2>";
+  } else if (userInput.trim() === password) {
+    // Passwort korrekt → Inhalt anzeigen
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Falsches Passwort! Zugriff verweigert.");
+    document.body.innerHTML = "<h2>Kein Zugriff</h2>";
+  }
+</script>
+
+
+
+
+
 
 </body>
 </html>
