@@ -1,14 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
+/* --- Farben & Variablen für Dark Mode --- */
+:root {
+  --bg: #0f1720;
+  --card: #111826;
+  --muted: #9aa4b2;
+  --text: #e6eef8;
+  --accent: #68a0ff;
+  --hover-accent: #99c2ff;
+  --shadow: rgba(0,0,0,0.45);
+}
+
 /* --- Grundlegendes --- */
-body {
+html, body {
   font-family: 'Lato', sans-serif;
   margin: 0;
-  color: #333;
-  background: linear-gradient(180deg, #f8f8f8 0%, #ffffff 100%);
-  font-size: 16px; /* insgesamt kleiner */
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
   line-height: 1.6;
-  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; /* sanftes Scrollen */
 }
 
 /* --- Hero-Bereich --- */
@@ -22,41 +36,43 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.8em; /* kleiner als vorher */
+  font-size: 2.8em;
   margin-bottom: 0.2em;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 .hero p {
-  font-size: 1.1em; /* kleiner als vorher */
+  font-size: 1.1em;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
 
-/* --- Hero Navigation --- */
+/* --- Hero Navigation mit leichtem Hintergrund --- */
 .hero-nav {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 25px;
   flex-wrap: wrap;
+  background: rgba(255,255,255,0.05); /* fast durchsichtiger Balken */
+  padding: 6px 12px;
+  border-radius: 8px;
 }
 
 .hero-nav a {
-  color: white;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.95em; /* kleiner */
-  padding: 8px 12px;
+  font-size: 0.95em;
+  padding: 6px 10px;
   border-radius: 5px;
   transition: all 0.3s ease;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
 }
 
 .hero-nav a:hover {
-  background-color: rgba(255,255,255,0.2);
-  color: #000000;
+  background-color: rgba(255,255,255,0.1);
+  color: var(--hover-accent);
   transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(30,115,190,0.3);
+  box-shadow: 0 4px 10px var(--shadow);
 }
 
 /* --- Sections --- */
@@ -64,16 +80,14 @@ section {
   padding: 40px 20px;
   max-width: 900px;
   margin: 20px auto;
-  background: white;
+  background: var(--card);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px var(--shadow);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
-  font-size: 1em; /* Text kleiner */
+  font-size: 1em;
 }
-
-section:nth-child(even) { background: #f2f2f2; }
 
 section.visible {
   opacity: 1;
@@ -81,33 +95,41 @@ section.visible {
 }
 
 /* --- Überschriften --- */
+h1, h2, h3 {
+  color: var(--text);
+  margin: 0 0 0.5rem 0;
+}
+
 h2 {
-  color: #1e73be;
-  border-bottom: 2px solid #1e73be;
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--accent);
   display: inline-block;
   margin-bottom: 15px;
-  font-size: 1.8em; /* etwas kleiner */
 }
 
 h3 {
-  font-size: 1.3em; /* kleiner */
+  font-size: 1.3em;
 }
 
 /* --- Tabellen --- */
 table {
   width: 100%;
   border-collapse: collapse;
+  color: var(--text);
 }
 
 td, th {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95em; /* kleiner */
+  padding: 6px 8px;
+  border-bottom: 1px dashed rgba(255,255,255,0.03);
+  font-size: 0.95em;
 }
 
 /* --- Galerie --- */
 .main-gallery { position:relative; }
-.main-gallery img { width:100%; max-height:500px; object-fit:cover; border-radius:10px; cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.main-gallery img {
+  width:100%; max-height:500px; object-fit:cover; border-radius:10px;
+  cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .main-gallery img:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
 .prev, .next { 
@@ -119,8 +141,11 @@ td, th {
 .next { right:10px; }
 
 .thumbnails { display:flex; justify-content:center; gap:10px; margin-top:10px; }
-.thumbnails img { width:120px; height:80px; object-fit:cover; border-radius:5px; cursor:pointer; transition: transform 0.3s, border 0.3s; }
-.thumbnails img:hover { transform: scale(1.05); border:2px solid #1e73be; }
+.thumbnails img {
+  width:120px; height:80px; object-fit:cover; border-radius:5px;
+  cursor:pointer; transition: transform 0.3s, border 0.3s;
+}
+.thumbnails img:hover { transform: scale(1.05); border:2px solid var(--accent); }
 
 /* --- Lightbox --- */
 .lightbox {
@@ -164,108 +189,25 @@ td, th {
 .lb-prev { left:20px; } 
 .lb-next { right:20px; }
 
-:root {
-  /* Farben Dark Mode (Skalierbar via CSS-Variablen) */
-  --bg: #0f1720;
-  --card: #111826;
-  --muted: #9aa4b2;
-  --text: #e6eef8;
-  --accent: #68a0ff;
-  --shadow: rgba(0,0,0,0.45);
-}
-
-/* Forciere Dark Mode auf der gesamten Seite */
-html, body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Überschriften */
-h1, h2, h3 {
-  color: var(--text);
-  margin: 0 0 0.5rem 0;
-}
-
-/* Container / Sektionen */
-section {
-  max-width: 900px;
-  margin: 24px auto;
-  padding: 18px;
-  background: transparent;
-}
-
-/* Karten / abgesetzte Boxen */
-.preis-container, .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.04);
-  color: var(--text);
-  border-radius: 10px;
-  box-shadow: 0 8px 20px var(--shadow);
-}
-
-/* Preis spezifisch (dezenter, mittig) */
-.preis-container {
-  margin: 14px auto;
-  padding: 12px 20px;
-  max-width: 320px;
+/* --- Footer --- */
+footer {
   text-align: center;
-}
-.preis-container .preis-text {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 0;
-}
-.preis-container .miete-text {
-  margin-top: 6px;
   color: var(--muted);
-  font-size: 0.95rem;
+  padding: 24px 0;
 }
 
-/* Link-Style */
+/* --- Links --- */
 a {
   color: var(--accent);
   text-decoration: none;
 }
-a:hover { text-decoration: underline; }
+a:hover { color: var(--hover-accent); text-decoration: underline; }
 
-/* Galerie (Beispiel-Anpassungen) */
-.main-gallery, .thumbnails {
-  max-width: 900px;
-  margin: 0 auto;
-}
-#main-img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.04);
-}
-
-/* Thumbnails - dezenter Rahmen */
-.thumb {
-  max-height: 70px;
-  margin: 6px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.03);
-}
-
-/* Footer */
-footer { text-align: center; color: var(--muted); padding: 24px 0; }
-
-/* Optional: helle Elemente (z. B. Tabellen) */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--text);
-}
-table td { padding: 6px 8px; border-bottom: 1px dashed rgba(255,255,255,0.03); }
-
-/* kleine responsive Verbesserungen */
+/* --- Responsive --- */
 @media (max-width:600px) {
-  .preis-container { max-width: 92%; padding: 10px 14px; }
+  .hero h1 { font-size:2.2em; }
+  .hero p { font-size:1em; }
+  .hero-nav { gap: 12px; }
+  .hero-nav a { font-size:0.9em; padding:4px 8px; }
+  section { padding:20px 12px; }
 }
