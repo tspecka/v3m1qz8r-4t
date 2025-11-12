@@ -163,3 +163,109 @@ td, th {
 }
 .lb-prev { left:20px; } 
 .lb-next { right:20px; }
+
+:root {
+  /* Farben Dark Mode (Skalierbar via CSS-Variablen) */
+  --bg: #0f1720;
+  --card: #111826;
+  --muted: #9aa4b2;
+  --text: #e6eef8;
+  --accent: #68a0ff;
+  --shadow: rgba(0,0,0,0.45);
+}
+
+/* Forciere Dark Mode auf der gesamten Seite */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Überschriften */
+h1, h2, h3 {
+  color: var(--text);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Container / Sektionen */
+section {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 18px;
+  background: transparent;
+}
+
+/* Karten / abgesetzte Boxen */
+.preis-container, .card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* Preis spezifisch (dezenter, mittig) */
+.preis-container {
+  margin: 14px auto;
+  padding: 12px 20px;
+  max-width: 320px;
+  text-align: center;
+}
+.preis-container .preis-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+.preis-container .miete-text {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Link-Style */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* Galerie (Beispiel-Anpassungen) */
+.main-gallery, .thumbnails {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#main-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Thumbnails - dezenter Rahmen */
+.thumb {
+  max-height: 70px;
+  margin: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Footer */
+footer { text-align: center; color: var(--muted); padding: 24px 0; }
+
+/* Optional: helle Elemente (z. B. Tabellen) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+}
+table td { padding: 6px 8px; border-bottom: 1px dashed rgba(255,255,255,0.03); }
+
+/* kleine responsive Verbesserungen */
+@media (max-width:600px) {
+  .preis-container { max-width: 92%; padding: 10px 14px; }
+}
